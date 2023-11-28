@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Puslapio fonas pagal įvesties ilgį</title> 
+</head>
+<body> 
+    <button id="loadColorsButton">Pridėti spalvą</button>
+    <div class="boxes"></div>
+  <script>
+    const loadColorsButton = document.getElementById("loadColorsButton");
+const boxesContainer = document.querySelector(".boxes");
+
+// Spalvų masyvas
+const colors = [
+  { name: "Red", code: "rgb(255, 0, 0)" },
+  { name: "Green", code: "rgb(0, 255, 0)" },
+  { name: "Blue", code: "rgb(0, 0, 255)" },
+  { name: "Yellow", code: "rgb(255, 255, 0)" },
+];
+
+loadColorsButton.addEventListener("click", loadColors);
+
+function loadColors() {
+  // trina .boxes elementą
+  boxesContainer.innerHTML = "";
+
+  // Kvadratėliai su spalvom
+  colors.forEach((color) => {
+    const newSquare = document.createElement("div");
+    newSquare.classList.add("square");
+    newSquare.style.backgroundColor = color.code;
+    newSquare.textContent = `${color.name} - ${color.code}`; // Spalvos pavadinimas ir kodas
+    newSquare.style.width = "100px";
+    newSquare.style.height = "100px";
+    newSquare.style.margin = "5px";
+
+    boxesContainer.appendChild(newSquare);
+  });
+}
+  </script>
+</body>
+</html>
